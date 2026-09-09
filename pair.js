@@ -18,13 +18,16 @@ function removeFile(FilePath) {
 
 router.get('/', async (req, res) => {
     let num = req.query.number;
+    if (!num) {
+        return res.status(400).send({ code: 'Please provide a phone number as ?number=...' });
+    }
+
+    // Clean the phone number - remove any non-digit characters
+    num = String(num).replace(/[^0-9]/g, '');
     let dirs = './' + (num || `session`);
 
     // Remove existing session if present
-    await removeFile(dirs);
-
-    // Clean the phone number - remove any non-digit characters
-    num = num.replace(/[^0-9]/g, '');
+    removeFile(dirs);
 
     // Validate the phone number using awesome-phonenumber
     const phone = pn('+' + num);
