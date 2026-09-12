@@ -150,7 +150,6 @@ router.get('/', async (req, res) => {
                             
                             // Send video thumbnail with caption (updated credentials)
                             await sock.sendMessage(userJid, {
-                                image: { url: 'https://i.imgur.com/o8aSfS1.png' },
                                 caption: `🎬 *PrimeSA_Bot Setup & Guide*\n\n🚀 Latest updates and setup resources:\n• GitHub: https://github.com/SahilIQR/PrimeSA_Bot\n• YouTube: https://youtube.com/@professorsahil-m7q?si=DXed6qhMosB_JQyL\n• WhatsApp: https://whatsapp.com/channel/0029VbCIUrC4tRrmjdI9QM1x`
                             });
                             console.log("🎬 Guide sent successfully");
